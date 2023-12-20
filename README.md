@@ -53,7 +53,7 @@ Before running any of the code in this repo, make sure you have Python installed
 
 ### 2. Install Dependencies 
 Prior to running the scripts in this repo, please install the following dependency 
-'pip install pandas'.  
+`pip install pandas`.  
 
 ### 3. Run the Scripts 
 In order to run the scrupts, keep in mind that `merge results.ipynb` should be run prior to `Deduplication.ipynb`.
