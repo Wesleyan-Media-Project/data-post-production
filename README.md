@@ -37,7 +37,7 @@ For Facebook ads, the final output tables are:
 
 + fb_2022_adid_text.csv.gz
 - fb_2022_adid_var1.csv.gz
-+ fb_2022_adid_var_120723.csv.gz
++ fb_2022_adid_var.csv.gz
 
 For Google ads, the final output tables are: 
 + g2022_adid_01062021_11082022_text_v20231203.csv
@@ -60,6 +60,6 @@ Prior to running the scripts in this repo, please install the following dependen
 `pip install pandas`.  
 
 ### 3. Run the Scripts 
-In order to run the scripts, keep in mind that `01-merging-results` should be run prior to `02-deduplication/Deduplication.ipynb`, `01-merging-results/01_merge_preprocessed_multimedia_results.ipynb` prior to `01-merging-results/02_merge_final_classification_results`, and that `01-merging-results` requires output from multiple data collection, preprocessing and classification repos being linked above. 
+In order to run the scripts, keep in mind that `01-merging-results` should be run prior to `02-deduplication`, `01-merging-results/01_merge_preprocessed_results` prior to `01-merging-results/02_merge_final_classification_results`, and that `01-merging-results` requires output from multiple data collection, preprocessing and classification repos being linked above. 
 
 Prior to running these scripts, you will have to change input and output file paths to match up with your local file paths. 
