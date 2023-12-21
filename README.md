@@ -13,9 +13,11 @@ This repo is a part of the data storage and processing step.
 - [Setup](#setup)
 
 ## Introduction
-This repo contains code that allows for merging variables derived from different processing and classification steps and final data cleaning, with a particular focus on deduplication. 
+This repo contains code that allows for merging different data fields and final data cleaning. 
 
-Specifically it contains two key tasks. The first task merges text, image and video ads, and various variables extracted from these ads. It contains two components. The first component makes sure that the variables particular to specific ad types (text, video and image ads) are added in after loading the metadata masterfile that contains metadata for all ad types. These merged results then go through various classification tasks (in other repos) to infer additional features of the ads. After these new variables are derived, they are sent back to the second component of this task, and merged into three mastertables. The second task drops duplicates using a collection of variables appropriate for research objectives through creating a unique ID for each piece of unique ad content, assigning group indices for all data points and then prefixing these indices and generating unique IDs in text strings. 
+
+Specifically it contains two key tasks. The first task merges variables derived from different pre-processing and classification steps. There are two components in the "merging variables" task. The first component concatentes text, image and video ads, information extracted from these ads and ad metadata. The merged results then go through various classification tasks located in other repos to produce additional variables. The second component merges these additional variables into the final output. The second task deduplicates ads that share the exact same creative content. 
+
 
 ## Objective
 Each of our repos belongs to one or more of the the following categories:
@@ -25,27 +27,29 @@ Each of our repos belongs to one or more of the the following categories:
 - Final Data Classification
 
 This repo is part of the Data Storage & Processing step. 
+
 ## Data
-The data created by both scripts in this repo is in a .csv format. 
+The data created by this repo is in the gzip format (gzip compressed .csv files). 
 
-An individual record created by `merge results.ipynb` contains the following fields:
-'index', 'ad_id', 'ad_url', 'ad_type', 'advertiser_id','advertiser_name', 'date_range_start', 'date_range_end', 'num_of_days','impressions', 'age_targeting', 'gender_targeting','geo_targeting_included', 'geo_targeting_excluded', 'spend_range_min_usd', 'spend_range_max_usd'.
+In the merging results task (specified in the folder `01-merging-results`), three output tables can be created for each platform. 
 
-Along with additional fields depending on what kind of ad data is being processed. 
+For Facebook ads, the final output tables are: 
 
-For text ads, the following fields are merged: 
-'ad_id', 'ad_title', 'ad_text', 'url', 'all_urls'.  
++ fb_2022_adid_text.csv.gz
+- fb_2022_adid_var1.csv.gz
++ fb_2022_adid_var_120723.csv.gz
 
-For video ads, the following fields are merged:
-google_asr_text', 'aws_ocr_video_text', 'aws_face_vid'.
+For Google ads, the final output tables are: 
++ g2022_adid_01062021_11082022_text_v20231203.csv
+- g2022_adid_01062021_11082022_var1_v20231203.csv
++ g2022_adid_var_121523.csv
 
-For ads that are images, the following fields are merged: 
-'aws_ocr_img_text', 'aws_face_vid'. 
 
-After multiple steps of data classification (race of focus, ad tone, ad goal, party classifier, entity linking, attack like, aspect-based sentiment analysis, issue classifiers) and post-processing, the following variables are produced and merged: 
-'sub_bucket',	'race_of_focus',	'race_of_focus_region_pct', 'ad_tone_constructed', 'ad_tone_mentionbased', 'goal_DONATE_prediction', 'goal_DONATE_predicted_prob', 'goal_CONTACT_prediction', 'goal_CONTACT_predicted_prob', 'goal_PURCHASE_prediction', 'goal_PURCHASE_predicted_prob', 'goal_GOTV_prediction', 'goal_GOTV_predicted_prob', 'goal_EVENT_prediction', 'goal_EVENT_predicted_prob', 'goal_POLL_prediction', 'goal_POLL_predicted_prob', 'goal_GATHERINFO_prediction', 'goal_GATHERINFO_predicted_prob', 'goal_LEARNMORE_prediction', 'goal_LEARNMORE_predicted_prob', 'goal_PRIMARY_PERSUADE_prediction', 'goal_PRIMARY_PERSUADE_predicted_prob', 'goal_highest_prob', 'party_all_clf_pdid'(facebook ads), 'prob_dem', 'prob_other', 'prob_rep', 'party_all_clf_adid', 'party_all_clf_adid_agg', 'party_all', 'detected_entities', 'detected_entities_federal', 'attacklike1_bert_pred', 'attacklike1_bert_prob', 'attacklike2_bert_pred', 'attacklike2_bert_prob', 'attacklike3_bert_pred', 'attacklike_senti_pred', 'attacklike_senti_prob', 'ABSA_field', 'ABSA_predicted_sentiment', 'issue_field', 'issue_class', 'aws_face_federal', 'combined_entities_federal', 'federal_verified'. 
+All tables are at the ad_id level. The first table for each platform primarily contains text fields, such as sponsor names, ad URLs, speech and text extracted from videos and images. The second table contains non-text fields queried or extracted from the data collection and preprocessing steps, such as ad spending, dates of ads being run, demographic targeting information. These two tables are produced in `01-merging-results/merge_preprocessed_multimedia_results.ipynb`. The input data came from image-and-video-data-preparation and aws-rekognition-processing (INSERT LINKS TO REPOS). The third table is produced in the folder `merge_final_classification_results`. It adds additional variables into the second table. Specifically, this task merges output from race of focus, ad tone, ad goal, party classifier, entity linking, attack like, aspect-based sentiment analysis, and issue classifiers (INSERT LINKS TO REPOS). All of these repos for data classification take the first two tables as input. 
 
-`Deduplication.ipynb` returns all of the fields that are input, with deduplication being done on them.  
+
+`Deduplication.ipynb` identifies exact duplicate ads based on text fields and creates unique creative identifiers. This is optional and customizable based on research objectives. 
+
 
 ## Setup
 ### 1. Install Relevant Software
@@ -56,8 +60,6 @@ Prior to running the scripts in this repo, please install the following dependen
 `pip install pandas`.  
 
 ### 3. Run the Scripts 
-In order to run the scrupts, keep in mind that `merge results.ipynb` should be run prior to `Deduplication.ipynb`.
+In order to run the scripts, keep in mind that `01-merging-results` should be run prior to `Deduplication.ipynb` and that `01-merging-results` requires output from multiple data collection, preprocessing and classification repos being linked above. 
 
-Prior to running `merge results.ipynb`, you will have to change the line of code `df = pd.read_csv(my_metadata_filepath)` to match up with your metadata filepath. Prior to running `Deduplication.ipynb`, you will have the change the line of code `df = pd.read_csv('my-final-table.csv')` to match with your final table filepath. 
-
-After running `merge results.ipynb`, the results will be saved at whatever file is indicated by the line of code `outfilepath = 'outfile.csv'`. 
+Prior to running these scripts, you will have to change input and output file paths to match up with your local file paths. 
