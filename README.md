@@ -45,7 +45,7 @@ For Google ads, the final output tables are:
 + g2022_adid_var_121523.csv
 
 
-All tables are at the ad_id level. The first table for each platform primarily contains text fields, such as sponsor names, ad URLs, speech and text extracted from videos and images. The second table contains non-text fields queried or extracted from the data collection and preprocessing steps, such as ad spending, dates of ads being run, demographic targeting information. These two tables are produced in `01-merging-results/merge_preprocessed_multimedia_results.ipynb`. The input data came from image-and-video-data-preparation and aws-rekognition-processing (INSERT LINKS TO REPOS). The third table is produced in the folder `merge_final_classification_results`. It adds additional variables into the second table. Specifically, this task merges output from race of focus, ad tone, ad goal, party classifier, entity linking, attack like, aspect-based sentiment analysis, and issue classifiers (INSERT LINKS TO REPOS). All of these repos for data classification take the first two tables as input. 
+All tables are at the ad_id level. The first table for each platform primarily contains text fields, such as sponsor names, ad URLs, speech and text extracted from videos and images. The second table contains non-text fields queried or extracted from the data collection and preprocessing steps, such as ad spending, dates of ads being run, demographic targeting information. These two tables are produced in `01-merging-results/merge_preprocessed_multimedia_results.ipynb`. The input data came from [image-and-video-data-preparation](https://github.com/Wesleyan-Media-Project/image-video-data-preparation) and [aws-rekognition-image-video-processing](https://github.com/Wesleyan-Media-Project/aws-rekognition-image-video-processing). The third table is produced in the folder `merge_final_classification_results`. It adds additional variables into the second table. Specifically, this task merges output from race of focus, ad tone, ad goal, party classifier, entity linking, attack like, aspect-based sentiment analysis, and issue classifiers (INSERT LINKS TO REPOS). All of these repos for data classification take the first two tables as input. 
 
 
 `Deduplication.ipynb` identifies exact duplicate ads based on text fields and creates unique creative identifiers. This is optional and customizable based on research objectives. 
@@ -60,6 +60,6 @@ Prior to running the scripts in this repo, please install the following dependen
 `pip install pandas`.  
 
 ### 3. Run the Scripts 
-In order to run the scripts, keep in mind that `01-merging-results` should be run prior to `Deduplication.ipynb` and that `01-merging-results` requires output from multiple data collection, preprocessing and classification repos being linked above. 
+In order to run the scripts, keep in mind that `01-merging-results` should be run prior to `02-deduplication/Deduplication.ipynb`, `01-merging-results/01_merge_preprocessed_multimedia_results.ipynb` prior to `01-merging-results/02_merge_final_classification_results`, and that `01-merging-results` requires output from multiple data collection, preprocessing and classification repos being linked above. 
 
 Prior to running these scripts, you will have to change input and output file paths to match up with your local file paths. 
