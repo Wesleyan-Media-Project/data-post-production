@@ -29,17 +29,18 @@ Each of our repos belongs to one or more of the the following categories:
 This repo is part of the Data Storage & Processing step. 
 
 ## Data
-The data created by this repo is in the gzip format (gzip compressed .csv files). 
+The data created by this repo is in the gzip format (gzip compressed .csv files) or the csv format. 
 
+### Merging preprocessed and final classification results
 In the merging results task (specified in the folder `01-merging-results`), three output tables can be created for each platform. 
 
-For Facebook ads, the final output tables are: 
+For Facebook 2022 ads, the final output tables are: 
 
 + fb_2022_adid_text.csv.gz
 - fb_2022_adid_var1.csv.gz
 + fb_2022_adid_var.csv.gz
 
-For Google ads, the final output tables are: 
+For Google 2022 ads, the final output tables are: 
 + g2022_adid_01062021_11082022_text_v20231203.csv
 - g2022_adid_01062021_11082022_var1_v20231203.csv
 + g2022_adid_var_121523.csv
@@ -48,7 +49,17 @@ For Google ads, the final output tables are:
 All tables are at the ad_id level. The first table for each platform primarily contains text fields, such as sponsor names, ad URLs, speech and text extracted from videos and images. The second table contains non-text fields queried or extracted from the data collection and preprocessing steps, such as ad spending, dates of ads being run, demographic targeting information. These two tables are produced in `01-merging-results/01_merge_preprocessed_results`. The input data comes from [image-and-video-data-preparation](https://github.com/Wesleyan-Media-Project/image-video-data-preparation), [automatic-speech-recognition](https://github.com/Wesleyan-Media-Project/automatic-speech-recognition) and [aws-rekognition-image-video-processing](https://github.com/Wesleyan-Media-Project/aws-rekognition-image-video-processing). The third table is produced in the folder `01-merging-results/02_merge_final_classification_results`. It adds additional variables into the second table. Specifically, this task merges output from [entity_linking_2022](https://github.com/Wesleyan-Media-Project/entity_linking_2022), [attack_like](https://github.com/Wesleyan-Media-Project/attack_like), [ABSA](https://github.com/Wesleyan-Media-Project/ABSA), [race_of_focus](https://github.com/Wesleyan-Media-Project/race_of_focus),  [party_classifier](https://github.com/Wesleyan-Media-Project/party_classifier), [ad_tone](https://github.com/Wesleyan-Media-Project/ad_tone), ad_goal_classifier(https://github.com/Wesleyan-Media-Project/ad_goal_classifier), [party_classifier_pdid](https://github.com/Wesleyan-Media-Project/party_classifier_pdid), and issue_classifier(https://github.com/Wesleyan-Media-Project/issue_classifier). All of these repos for data classification take the first two tables (of Facebook and Google ads respectively) as input. 
 
 
+### Identifying duplicate content
+
 `02-deduplication/Deduplication.ipynb` identifies exact duplicate ads based on text fields and creates unique creative identifiers. This is optional and customizable based on research objectives. 
+
+The output tables for this task are the mapping between ad_id and the new unique creative identifiers (referred to as "cid" or "wmp_creative_id"). Ads that share the exact same creative content have the same unique creative identifiers. 
+
+Output table for Facebook 2022 ads: 
++ cid_fb2022.csv
+
+Output table for Google 2022 ads: 
++ cid_google2022_v20231203.csv
 
 
 ## Setup
