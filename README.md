@@ -41,8 +41,8 @@ For Facebook 2022 ads, the final output tables are:
 + fb_2022_adid_var.csv.gz
 
 For Google 2022 ads, the final output tables are: 
-+ g2022_adid_01062021_11082022_text_v20231203.csv
-- g2022_adid_01062021_11082022_var1_v20231203.csv
++ g2022_adid_01062021_11082022_text.csv
+- g2022_adid_01062021_11082022_var1.csv
 + g2022_adid_var_121523.csv
 
 
@@ -59,7 +59,7 @@ Output table for Facebook 2022 ads:
 + cid_fb2022.csv
 
 Output table for Google 2022 ads: 
-+ cid_google2022_v20231203.csv
++ cid_google2022.csv
 
 
 ## Setup
