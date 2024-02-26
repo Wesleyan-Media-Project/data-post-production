@@ -28,7 +28,7 @@ Each of our repos belongs to one or more of the the following categories:
 - Data Classification
 - Compiled Final Data
 
-This repo is part of the Data Storage & Processing step. 
+This repo is part of the Data Processing step. 
 
 ## Data
 The data created by this repo is in the gzip format (gzip compressed .csv files) or the csv format. 
