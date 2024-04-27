@@ -2,7 +2,9 @@
 
 Welcome! This repo is part of the Cross-platform Election Advertising Transparency initiatIVE (CREATIVE) project. CREATIVE is a joint infrastructure project of WMP and privacy-tech-lab at Wesleyan University. CREATIVE provides cross-platform integration and standardization of political ads collected from Google and Facebook.
 
-This repo is a part of the data storage and processing step.
+This repo is a part of the Data Processing step.
+![A picture of the pipeline diagram](CREATIVE_step2_032524.png)
+
 ## Table of Contents
 - [Introduction](#introduction)
 
@@ -22,11 +24,11 @@ Specifically it contains two key tasks. The first task merges variables derived 
 ## Objective
 Each of our repos belongs to one or more of the the following categories:
 - Data Collection
-- Data Storage & Processing
-- Preliminary Data Classification
-- Final Data Classification
+- Data Processing
+- Data Classification
+- Compiled Final Data
 
-This repo is part of the Data Storage & Processing step. 
+This repo is part of the Data Processing step. 
 
 ## Data
 The data created by this repo is in the gzip format (gzip compressed .csv files) or the csv format. 
