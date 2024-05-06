@@ -21,7 +21,7 @@ This repo is a part of the Data Processing step.
 This repo contains code that allows for merging different data fields and final data cleaning. 
 
 
-Specifically it contains two key tasks. The first task merges variables derived from different pre-processing and classification steps. There are two components in the "merging variables" task. The first component concatentes text, image and video ads, information extracted from these ads and ad metadata. The merged results then go through various classification tasks located in other repos to produce additional variables. The second component merges these additional variables into the final output. The second task deduplicates ads that share the exact same creative content. 
+Specifically it contains two key tasks. The first task merges variables derived from different pre-processing and classification steps. There are two components in the "merging variables" task. The first component concatenates text, image and video ads, information extracted from these ads and ad metadata. The merged results then go through various classification tasks located in other repos to produce additional variables. The second component merges these additional variables into the final output. The second task deduplicates ads that share the exact same creative content. 
 
 
 ## Objective
