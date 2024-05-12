@@ -71,7 +71,7 @@ Output table for Google 2022 ads:
 ### 1. Install Relevant Software
 Before running any of the code in this repo, make sure you have Python installed on your system. You can do so on the [official Python website](https://www.python.org/downloads/). In addition, install Jupyter Notebook by writing the following command in your terminal 'pip install jupyter'. From here, you should be able to run Jupyter Notebook by entering this command in your terminal 'jupyter notebook'.   
 
-### 2. Install Dependencies 
+### 2. Install Necessary Dependencies and Repo Output
 Prior to running the scripts in this repo, please install the following dependency 
 `pip install pandas`.  
 
@@ -80,7 +80,7 @@ Prior to running the scripts in this repo, please install the following dependen
 `01-merging-results/02_merge_final_classification_results` requires output from [entity_linking_2022](https://github.com/Wesleyan-Media-Project/entity_linking_2022), [attack_like](https://github.com/Wesleyan-Media-Project/attack_like), [ABSA](https://github.com/Wesleyan-Media-Project/ABSA), [race_of_focus](https://github.com/Wesleyan-Media-Project/race_of_focus),  [party_classifier](https://github.com/Wesleyan-Media-Project/party_classifier), [ad_tone](https://github.com/Wesleyan-Media-Project/ad_tone), [ad_goal_classifier](https://github.com/Wesleyan-Media-Project/ad_goal_classifier), [party_classifier_pdid](https://github.com/Wesleyan-Media-Project/party_classifier_pdid), and [issue_classifier](https://github.com/Wesleyan-Media-Project/issue_classifier). 
 
 ### 3. Run the Scripts 
-In order to run the scripts, keep in mind that `01-merging-results` should be run prior to `02-deduplication`, `01-merging-results/01_merge_preprocessed_results` prior to `01-merging-results/02_merge_final_classification_results`, and that `01-merging-results` requires output from multiple data collection, preprocessing and classification repos being linked above. 
+In order to run the scripts, keep in mind that `01-merging-results` should be run prior to `02-deduplication`, `01-merging-results/01_merge_preprocessed_results` prior to `01-merging-results/02_merge_final_classification_results`, and that `01-merging-results` requires output from multiple data collection, preprocessing and classification repos which are linked above. 
 
 Prior to running these scripts, you will have to change input and output file paths to match up with your local file paths. 
 
