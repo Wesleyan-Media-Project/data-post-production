@@ -3,37 +3,23 @@ Welcome! This repo contains scripts for processing content from textual and audi
 
 The Cross-platform Election Advertising Transparency Initiative (CREATIVE), is a jointly founded infrastructure project by Wesleyan Media Project [(WMP)](https://mediaproject.wesleyan.edu) and [Privacy Tech Lab](https://privacytechlab.org) at Wesleyan University in Connecticut. This program is funded by a National Science Foundation [grant](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2235006) to support making WMP’s work and data accessible to anyone. CREATIVE aims to provide cross-platform integration and standardization of digital advertising data related to federal elections by scraping or gaining access to digital ads themselves. (For more information on the CREATIVE project, click [here](https://www.creativewmp.com/)).
 
-This repo is a part of the Data Processing step.
+To analyze the different dimensions of political ad transparency we have developed an analysis pipeline. The scripts in this repo are part of the Data Processing step in our pipeline. 
 ![A picture of the pipeline diagram](CREATIVE_step2_032524.png)
 
 ## Table of Contents
-- [Introduction](#introduction)
+[1. Introduction](#introduction) <br>
+[2. Data](#data)<br>
+[3. Setup](#setup)<br>
+[4. Thank You!](thank-you)<br>
 
-- [Objective](#objective)
-
-- [Data](#data)
-
-- [Setup](#setup)
-
-- [Thank You!](thank-you)
-
-## Introduction
+## 1. Introduction
 This repo contains code that allows for merging different data fields and final data cleaning. 
 
 
 Specifically it contains two key tasks. The first task merges variables derived from different pre-processing and classification steps. There are two components in the "merging variables" task. The first component concatenates text, image and video ads, information extracted from these ads and ad metadata. The merged results then go through various classification tasks located in other repos to produce additional variables. The second component merges these additional variables into the final output. The second task deduplicates ads that share the exact same creative content. 
 
 
-## Objective
-Each of our repos belongs to one or more of the the following categories:
-- Data Collection
-- Data Processing
-- Data Classification
-- Compiled Final Data
-
-This repo is part of the Data Processing step. 
-
-## Data
+## 2. Data
 The data created by this repo is in the gzip format (gzip compressed .csv files) or the csv format. 
 
 ### Merging preprocessed and final classification results
@@ -67,7 +53,7 @@ Output table for Google 2022 ads:
 + cid_google2022.csv
 
 
-## Setup
+## 3. Setup
 ### 1. Install Relevant Software
 Before running any of the code in this repo, make sure you have Python installed on your system. You can do so on the [official Python website](https://www.python.org/downloads/). In addition, install Jupyter Notebook by writing the following command in your terminal 'pip install jupyter'. From here, you should be able to run Jupyter Notebook by entering this command in your terminal 'jupyter notebook'.   
 
@@ -84,7 +70,7 @@ In order to run the scripts, keep in mind that `01-merging-results` should be ru
 
 Prior to running these scripts, you will have to change input and output file paths to match up with your local file paths. 
 
-## Thank You
+## 4. Thank You
 <p align="center"><strong>We would like to thank our financial supporters!</strong></p><br>
 
 <p align="center">This material is based upon work supported by the National Science Foundation under Grant Numbers 2235006, 2235007, and 2235008.</p>
