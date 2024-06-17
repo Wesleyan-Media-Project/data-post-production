@@ -18,6 +18,7 @@ This repo contains code that allows for merging different data fields and final 
 
 Specifically it contains two key tasks. The first task merges variables derived from different pre-processing and classification steps. There are two components in the "merging variables" task. The first component concatenates text, image and video ads, information extracted from these ads and ad metadata. The merged results then go through various classification tasks located in other repos to produce additional variables. The second component merges these additional variables into the final output. The second task deduplicates ads that share the exact same creative content. 
 
+See Wiki pages for an explanation of variables in var tables for [Facebook](https://github.com/Wesleyan-Media-Project/data-post-production/wiki/Variables-in-the-Facebook-Dataset) and [Google](https://github.com/Wesleyan-Media-Project/data-post-production/wiki/Variables-in-the-Google-Dataset)
 
 ## 2. Data
 The data created by this repo is in the gzip format (gzip compressed .csv files) or the csv format. 
