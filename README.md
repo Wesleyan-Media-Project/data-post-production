@@ -13,9 +13,10 @@ To analyze the different dimensions of political ad transparency we have develop
 [1. Introduction](#1-introduction)  
 [2. Data](#2-data)  
 [3. Setup](#3-setup)  
-[4. Thank You!](4-thank-you)
+[4. Thank You!](#4-thank-you)
 
 ## 1. Introduction
+
 
 This repo contains scripts for merging different data fields and final data cleaning.
 
