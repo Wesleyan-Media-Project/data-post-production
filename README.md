@@ -22,9 +22,18 @@ This repo contains scripts for merging different data fields and final data clea
 
 Specifically, the scripts in this repo perform two key tasks:
 
-1. The first task consists of merging variables derived from different pre-processing and classification steps. There are two components in the "merging variables" task. The first component concatenates text, image and video ads, information extracted from these ads and ad metadata. The merged results then go through various classification tasks located in other repos to produce additional variables. The second component merges these additional variables into the final output.
+1. `01-merging_results`: Merge variables derived from different pre-processing and classification steps. There are two components:
 
-2. The second task deduplicates ads that share the exact same creative content.
+(1). `01_merge_preprocessed_results`: This step corresponds to "Step 2a: Merge Ad Content and Metadata" in the pipeline diagram. This is performed after you extracted textual content fields from audiovisual ads in the following repos: 
+- [image-and-video-data-preparation](https://github.com/Wesleyan-Media-Project/image-video-data-preparation)
+- [automatic-speech-recognition](https://github.com/Wesleyan-Media-Project/automatic-speech-recognition)
+- [aws-rekognition-image-video-processing](https://github.com/Wesleyan-Media-Project/aws-rekognition-image-video-processing)
+
+This step concatenates text, image and video ads, textual fields extracted from these ads, ad metadata and produces two final output tables (The first two output tables for Facebook and Google respectively listed in the next section). 
+
+(2). `02_merge_final_classification_results`: This step correponds to "Step 3a: Merge Classification Results" in the pipeline diagram. The two final output tables from the above step will first go through data classification tasks -- Step 3 in our pipeline diagram -- to produce additional variables. Then these new variables are merged into the third and last final output table for Google and Facebook here. The data classification tasks for pipeline Step 3 are located in [entity_linking_2022](https://github.com/Wesleyan-Media-Project/entity_linking_2022), [attack_like](https://github.com/Wesleyan-Media-Project/attack_like), [ABSA](https://github.com/Wesleyan-Media-Project/ABSA), [race_of_focus](https://github.com/Wesleyan-Media-Project/race_of_focus), [party_classifier](https://github.com/Wesleyan-Media-Project/party_classifier), [ad_tone](https://github.com/Wesleyan-Media-Project/ad_tone), [ad_goal_classifier](https://github.com/Wesleyan-Media-Project/ad_goal_classifier), [party_classifier_pdid](https://github.com/Wesleyan-Media-Project/party_classifier_pdid), and [issue_classifier](https://github.com/Wesleyan-Media-Project/issue_classifier)).  
+
+2. `02-deduplication`: The second task deduplicates ads that share the exact same creative content and outputs a mapping between ad identifiers (`ad_id`) and unique creative identifiers (`cid` or `wmp_creative_id`). This step is performed after the above step of merging final results, described in 1(2). The resulting id mapping tables also belong to the final data output.  
 
 See Wiki pages for an explanation of variables in var tables for [Facebook](https://github.com/Wesleyan-Media-Project/data-post-production/wiki/Variables-in-the-Facebook-Dataset) and [Google](https://github.com/Wesleyan-Media-Project/data-post-production/wiki/Variables-in-the-Google-Dataset)
 
@@ -88,6 +97,8 @@ Prior to running the scripts in this repo, please install the following dependen
 pip install pandas
 ```
 
+This repo primarily merges and deduplicates variables. Python's pandas and numpy libraries are sufficient for setup.
+ 
 `01-merging-results/01_merge_preprocessed_results` requires output from [image-and-video-data-preparation](https://github.com/Wesleyan-Media-Project/image-video-data-preparation), [automatic-speech-recognition](https://github.com/Wesleyan-Media-Project/automatic-speech-recognition) and [aws-rekognition-image-video-processing](https://github.com/Wesleyan-Media-Project/aws-rekognition-image-video-processing).
 
 `01-merging-results/02_merge_final_classification_results` requires output from [entity_linking_2022](https://github.com/Wesleyan-Media-Project/entity_linking_2022), [attack_like](https://github.com/Wesleyan-Media-Project/attack_like), [ABSA](https://github.com/Wesleyan-Media-Project/ABSA), [race_of_focus](https://github.com/Wesleyan-Media-Project/race_of_focus), [party_classifier](https://github.com/Wesleyan-Media-Project/party_classifier), [ad_tone](https://github.com/Wesleyan-Media-Project/ad_tone), [ad_goal_classifier](https://github.com/Wesleyan-Media-Project/ad_goal_classifier), [party_classifier_pdid](https://github.com/Wesleyan-Media-Project/party_classifier_pdid), and [issue_classifier](https://github.com/Wesleyan-Media-Project/issue_classifier).
