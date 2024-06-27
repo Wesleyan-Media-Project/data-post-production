@@ -6,7 +6,7 @@ This repo is a part of the [Cross-platform Election Advertising Transparency Ini
 
 To analyze the different dimensions of political ad transparency we have developed an analysis pipeline. The scripts in this repo are part of the "Data Merging" steps: Step 2a (Merge Ad Content and Metadata) and Step 3a (Merge Classification Results) in our pipeline.
 
-![A picture of the pipeline diagram](CREATIVE_step2_032524.png)
+![A picture of the pipeline diagram](CREATIVE_032524.png)
 
 ## Table of Contents
 
