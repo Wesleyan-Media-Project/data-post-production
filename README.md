@@ -29,7 +29,7 @@ Specifically, the scripts in this repo perform two key tasks:
 
 2. `02-deduplication`: The second task deduplicates ads that share the exact same creative content and outputs a mapping between ad identifiers (`ad_id`) and unique creative identifiers (`cid` or `wmp_creative_id`). This step is performed after the above step of merging final results, described in 1(2). The resulting id mapping tables also belong to the final data output.
 
-See Wiki pages for an explanation of variables in var tables for [Facebook](https://github.com/Wesleyan-Media-Project/data-post-production/wiki/Variables-in-the-Facebook-Dataset) and [Google](https://github.com/Wesleyan-Media-Project/data-post-production/wiki/Variables-in-the-Google-Dataset)
+See Wiki pages for an explanation of variables in var tables for [Facebook](https://github.com/Wesleyan-Media-Project/data-post-production/wiki/Variables-in-the-Facebook-Dataset) and [Google](https://github.com/Wesleyan-Media-Project/data-post-production/wiki/Variables-in-the-Google-Dataset).
 
 ## 2. Data
 
