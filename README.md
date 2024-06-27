@@ -90,6 +90,7 @@ Prior to running the scripts in this repo, please install the following dependen
 
 ```bash
 pip install pandas
+pip install numpy
 ```
 
 This repo primarily merges and deduplicates variables. Python's pandas and numpy libraries are sufficient for setup.
