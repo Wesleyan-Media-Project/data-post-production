@@ -102,7 +102,7 @@ This repo primarily merges and deduplicates variables. Python's pandas and numpy
 
 In order to run the scripts, note that `01-merging-results` should be run prior to `02-deduplication`, `01-merging-results/01_merge_preprocessed_results` prior to `01-merging-results/02_merge_final_classification_results`, and that `01-merging-results` requires output from multiple data collection, preprocessing and classification repos which are linked above.
 
-Prior to running these scripts, you will have to change input and output file paths to match up with your local file paths.
+Prior to running these scripts, you will have to change input and output file paths to match up with your local file paths. Part of doing this will be making sure that the various required output from the repos discussed above is stored within your computer in a way such that the input file paths and your local file paths are the same. 
 
 ## 4. Thank You
 
