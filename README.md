@@ -47,8 +47,8 @@ For Facebook 2022 ads, the final output tables are:
 
 For Google 2022 ads, the final output tables are:
 
-- g2022_adid_01062021_11082022_text.csv
-- g2022_adid_01062021_11082022_var1.csv
+- g2022_adid_text.csv
+- g2022_adid_var1.csv
 - g2022_adid_var.csv
 
 All tables are at the ad level (identified by `ad_id`). The first table for each platform primarily contains text fields, such as sponsor names, ad URLs, speech and text extracted from videos and images. The second table contains non-text fields queried or extracted from the data collection and preprocessing steps, such as ad spending, dates of ads being run, demographic targeting information. These two tables are produced in `01-merging-results/01_merge_preprocessed_results`. The input data comes from [image-and-video-data-preparation](https://github.com/Wesleyan-Media-Project/image-video-data-preparation), [automatic-speech-recognition](https://github.com/Wesleyan-Media-Project/automatic-speech-recognition) and [aws-rekognition-image-video-processing](https://github.com/Wesleyan-Media-Project/aws-rekognition-image-video-processing). The third table is produced in the folder `01-merging-results/02_merge_final_classification_results`. It adds additional variables into the second table. Specifically, this task merges output from [entity_linking_2022](https://github.com/Wesleyan-Media-Project/entity_linking_2022), [ABSA](https://github.com/Wesleyan-Media-Project/ABSA), [race_of_focus](https://github.com/Wesleyan-Media-Project/race_of_focus), [party_classifier](https://github.com/Wesleyan-Media-Project/party_classifier), [ad_tone](https://github.com/Wesleyan-Media-Project/ad_tone), [ad_goal_classifier](https://github.com/Wesleyan-Media-Project/ad_goal_classifier), [party_classifier_pdid](https://github.com/Wesleyan-Media-Project/party_classifier_pdid), and [issue_classifier](https://github.com/Wesleyan-Media-Project/issue_classifier). All of these repos for data classification take the first two tables (of Facebook and Google ads respectively) as input.
@@ -57,7 +57,7 @@ All tables are at the ad level (identified by `ad_id`). The first table for each
 
 `02-deduplication/Deduplication.ipynb` identifies exact duplicate ads based on text fields and creates unique creative identifiers. This is optional and customizable based on research objectives.
 
-The output tables for this task are the mapping between ad_id and the new unique creative identifiers (referred to as "cid" or "wmp_creative_id"). Ads that share the exact same creative content have the same unique creative identifiers.
+The output tables for this task are the mapping between ad_id and the new unique creative identifiers (referred to as "cid" or "wmp_creative_id"). Ads that share the exact same creative content have the same unique creative identifiers. 
 
 Output table for Facebook 2022 ads:
 
@@ -66,6 +66,8 @@ Output table for Facebook 2022 ads:
 Output table for Google 2022 ads:
 
 - cid_google2022.csv
+
+We have merged these tables, in particular the `wmp_creative_id` variable, into `fb_2022_adid_var.csv.gz` and `g2022_adid_var.csv` full variable tables. 
 
 ## 3. Setup
 
